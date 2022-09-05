@@ -42,7 +42,7 @@ for index, value in enumerate(refs):
                     atual = (atual + 1)%len(filaSC) # Incrementa o índice de forma circular
                     break
 
-print(f"SC {f_paginas_SC:.2f}")
+print("SC", f_paginas_SC)
 del bitR_SC, f_paginas_SC, filaSC, atual
 
 # -------------------------------------------- ÓTIMO ---------------------------------------------------
@@ -81,7 +81,7 @@ for index, value in enumerate(refs):
             filaOTM[ind] = value # Substitui na fila pelo novo valor
             f_paginas_OTM += 1
 
-print(f"OTM {f_paginas_OTM:.2f}")
+print("OTM", f_paginas_OTM)
 del f_paginas_OTM, filaOTM
 
 # ------------------------------------- CONJUNTO DE TRABALHO -------------------------------------------
@@ -132,5 +132,5 @@ for index, value in enumerate(refs):
     bitR_CT[value-1] = True # Define o bit R da página como True
     tempos[value-1] = index # Atualiza o tempo em que a página foi referenciada
 
-print(f"CT {f_paginas_CT:.2f}")
+print("CT", f_paginas_CT)
 del bitR_CT, tempos, limiar, f_paginas_CT, filaCT
