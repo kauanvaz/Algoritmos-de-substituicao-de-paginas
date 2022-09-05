@@ -1,4 +1,3 @@
-from cmath import inf
 import sys
 
 def organiza_entrada():
