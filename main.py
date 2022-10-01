@@ -88,7 +88,7 @@ del f_paginas_OTM, filaOTM
 from random import randint
 
 def fora_conj_trabalho(fila, R, tempos, tempo_atual, limiar):
-    menor_tempo = 10000
+    menor_tempo = float('inf')
     ind_menor_tempo = -1
     
     for index, value in enumerate(fila): # Iteração sobre a fila
@@ -100,7 +100,7 @@ def fora_conj_trabalho(fila, R, tempos, tempo_atual, limiar):
             if age > limiar: # Se a idade da página for maior que o limiar
                 return index
             else: # age <= limiar
-                if tempos[ind] < menor_tempo: # If para guardar a página com bitR == False mais antiga
+                if tempos[ind] < menor_tempo: # if para guardar a página com bitR == False mais antiga
                     menor_tempo = tempos[ind]
                     ind_menor_tempo = index
 
@@ -126,8 +126,9 @@ for index, value in enumerate(refs):
             f_paginas_CT += 1
     else: # Se a fila estiver cheia
         if value not in filaCT:
-            ind = fora_conj_trabalho(filaCT, bitR_CT, tempos, index, limiar) # Descobre o índice da
-            filaCT[ind] = value # Atualiza a página                          # página a ser substituída
+            # Descobre o índice da página a ser substituída
+            ind = fora_conj_trabalho(filaCT, bitR_CT, tempos, index, limiar) 
+            filaCT[ind] = value # Atualiza a página
             f_paginas_CT += 1
     bitR_CT[value-1] = True # Define o bit R da página como True
     tempos[value-1] = index # Atualiza o tempo em que a página foi referenciada
